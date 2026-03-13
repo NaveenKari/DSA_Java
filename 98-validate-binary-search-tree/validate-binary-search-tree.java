@@ -18,13 +18,14 @@ class Solution {
         return isValid(root,null,null);
     }
 
-    private boolean isValid(TreeNode root, Integer min, Integer max) {
-        if (root == null) return true;
+    private boolean isValid(TreeNode root, Integer left, Integer right){
 
-        if ((min != null && root.val <= min) || (max != null && root.val >= max)) {
-            return false;
-        }
+        if(root == null) return true;
 
-        return isValid(root.left, min, root.val) && isValid(root.right, root.val, max);
+        
+        if((left!= null && root.val <= left) || (right!= null && root.val >= right)) return false;
+
+        return isValid(root.left,left,root.val) && isValid(root.right,root.val,right);
+
     }
 }
